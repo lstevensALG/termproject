@@ -6,3 +6,11 @@
         <title><?php echo $webpageTitle; ?></title>
     </head>
     <body>
+        <!-- navbar -->
+        <header>
+            <div class="container">
+                <!-- First row -->
+                <div class="row">
+                </div>
+            </div>
+        </header>
