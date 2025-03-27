@@ -25,13 +25,14 @@
                     //SQL queriey for matching username and password
                     $sqlMatchInfo = "SELECT * FROM termproject_profiles WHERE profile_username='$username' ";
                     $result = mysqli_query($conn, $sqlMatchInfo);
+                    $loginSuccess = FALSE;
                     //Check if there is record with username
                     if (mysqli_num_rows($result) >= 1) {
                         $dbRecord = mysqli_fetch_assoc($result);
                         $dbPassword = $dbRecord['profile_password'];
                         //Check if password is same
                         if (password_verify($password, $dbPassword) ) {
-                            echo "Welcome, $username!";
+                            $loginSuccess = TRUE;
                         }
                         else {
                             echo "Error: incorrect password.";
@@ -42,6 +43,12 @@
                         echo "Error: username not found.";
                     }
                     
+                    if ($loginSuccess) {
+                        session_start();
+                        $_SESSION['profile_username'] = $username;
+                        $oto = $_SESSION['profile_username'];
+                        echo "Welcome, $oto!";
+                    }
 
                 }
             ?>
