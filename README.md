@@ -12,3 +12,8 @@ For example:
 Additionally, dont forget to do "npm install" to install the npm dependencies.
 
 You do not need to create an SQL databse through phpMyAdmin as I have code that will automatically create the profile database. Though, I am unsure if it will work if you do not have the "client" database.
+
+
+SYNCHRONIZE CHANGES TO BE ABLE TO PUSH CHANGES
+
+do this in source control VSCODE
