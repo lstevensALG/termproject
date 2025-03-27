@@ -19,19 +19,32 @@
                     //Encoding password
                     $password = password_hash($password, PASSWORD_DEFAULT);
 
-                    //SQL queries for creating a table and inserting a record to a table
+                    //SQL queries for creating a table,
+                    //checking if username is unique,
+                    //and inserting a record into a table
                     $sqlTableCreate = "CREATE TABLE IF NOT EXISTS termproject_profiles (profile_id INTEGER PRIMARY KEY AUTO_INCREMENT, profile_username TEXT NOT NULL, profile_password TEXT NOT NULL)";
+                    $sqlCheckUnique = "SELECT profile_username FROM termproject_profiles WHERE profile_username='$username'";
                     $sqlTableInsert = "INSERT INTO termproject_profiles (profile_username, profile_password) VALUES ('$username', '$password')";
                     
                     //Create table if it doesn't exist
                     mysqli_query($conn, $sqlTableCreate);
 
-                    //Insert to table
-                    if (mysqli_query($conn, $sqlTableInsert)) {
-                        echo "Record added successfully!";
-                    } else {
-                        echo "Error: " . mysqli_error($conn);
+                    //Check if username is unique
+                    if (mysqli_num_rows(mysqli_query($conn, $sqlCheckUnique)) == 0) {
+                        //If username is unique, try inserting
+                        if (mysqli_query($conn, $sqlTableInsert)) {
+                            echo "Record added successfully!";
+                        }
+                        //If insertion failed
+                        else {
+                            echo "Error: " . mysqli_error($conn);
+                        }
                     }
+                    //if username is not unique
+                    else {
+                        echo "Error: username is not unique";
+                    }
+                    
 
                 }
             ?>
