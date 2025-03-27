@@ -18,7 +18,7 @@
                         <button class="btn btn-light btn-sm" data-bs-theme-value="light">Light</button>
                     </div>
                 </div>
-                <h1 class="mb-5">Animals</h1>
+                <h1 class="mb-5">Placeholder</h1>
                 <div class="row">
                     <div class="col-md-4">
                         <input
