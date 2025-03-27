@@ -1,6 +1,6 @@
 <?php
     include "../directory.php";
-    $webpageTitle = "Home";
+    $webpageTitle = "Log In";
     include SITE_ROOT."/includes/header.php";
 ?>
 Log in

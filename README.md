@@ -9,4 +9,6 @@ For example:
 ><Directory "C:/xampp/htdocs/www/termproject">
 
 
-Additionally, dont forget to do "npm install" to install the npm dependencies
+Additionally, dont forget to do "npm install" to install the npm dependencies.
+
+You do not need to create an SQL databse through phpMyAdmin as I have code that will automatically create the profile database. Though, I am unsure if it will work if you do not have the "client" database.
