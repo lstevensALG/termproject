@@ -8,7 +8,6 @@
         <link rel="stylesheet" href="/css/style.css">
         <script src="/js/bootstrap.bundle.min.js"></script>
         <script src="/js/darkmodetoggle.js"></script>
-        <script src="/js/script.js"></script>
     </head>
     <body>
         <header class="mb-5">

@@ -19,14 +19,13 @@
                     //Encoding password
                     $password = password_hash($password, PASSWORD_DEFAULT);
 
-                    //SQL queries for creating a table,
-                    //checking if username is unique,
+                    //SQL queries for checking if username is unique,
                     //and inserting a record into a table
-                    $sqlTableCreate = "CREATE TABLE IF NOT EXISTS termproject_profiles (profile_id INTEGER PRIMARY KEY AUTO_INCREMENT, profile_username TEXT NOT NULL, profile_password TEXT NOT NULL)";
                     $sqlCheckUnique = "SELECT profile_username FROM termproject_profiles WHERE profile_username='$username'";
                     $sqlTableInsert = "INSERT INTO termproject_profiles (profile_username, profile_password) VALUES ('$username', '$password')";
                     
                     //Create table if it doesn't exist
+                    include SITE_ROOT."/db/tableCreateProfile.php";
                     mysqli_query($conn, $sqlTableCreate);
 
                     //Check if username is unique
