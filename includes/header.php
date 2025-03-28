@@ -39,10 +39,17 @@
                                 if (!isset($_SESSION['profile_username'])) {
                                     echo <<<END
                                     <li class="nav-itm">
-                                        <a href="/php/signup.php" class="nav-link text-bg-primary rounded-3">Sign Up</a>
+                                        <a href="/php/signup.php" class="nav-link">Sign Up</a>
                                     </li>
                                     <li class="nav-itm">
-                                        <a href="/php/login.php" class="nav-link">Log In</a>
+                                        <a href="/php/login.php" class="nav-link text-bg-primary rounded-3">Log In</a>
+                                    </li>
+                                    END;
+                                }
+                                else {
+                                    echo <<<END
+                                    <li class="nav-itm">
+                                        <a href="/php/logout.php" class="nav-link text-bg-primary rounded-3">Log Out</a>
                                     </li>
                                     END;
                                 }

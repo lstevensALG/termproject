@@ -1,3 +1,3 @@
 <?php
-    header("refresh:3; url=/index.php");
+    header("refresh:2; url=/index.php");
 ?>
