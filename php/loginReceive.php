@@ -44,7 +44,6 @@
                     }
                     
                     if ($loginSuccess) {
-                        session_start();
                         $_SESSION['profile_username'] = $username;
                         $oto = $_SESSION['profile_username'];
                         echo "Welcome, $oto!";

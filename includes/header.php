@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -32,12 +35,19 @@
                             <li class="nav-itm">
                                 <a href="/index.php" class="nav-link">Home</a>
                             </li>
-                            <li class="nav-itm">
-                                <a href="/php/signup.php" class="nav-link text-bg-primary rounded-3">Sign Up</a>
-                            </li>
-                            <li class="nav-itm">
-                                <a href="/php/login.php" class="nav-link">Log In</a>
-                            </li>
+                            <?php
+                                if (!isset($_SESSION['profile_username'])) {
+                                    echo <<<END
+                                    <li class="nav-itm">
+                                        <a href="/php/signup.php" class="nav-link text-bg-primary rounded-3">Sign Up</a>
+                                    </li>
+                                    <li class="nav-itm">
+                                        <a href="/php/login.php" class="nav-link">Log In</a>
+                                    </li>
+                                    END;
+                                }
+                            ?>
+                            
                             <li class="nav-itm">
                                 <a href="#" class="nav-link">Placeholder</a>
                             </li>
