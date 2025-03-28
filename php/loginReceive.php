@@ -1,5 +1,6 @@
 <?php
     include "../directory.php";
+    include SITE_ROOT."/php/redirectHome.php";
     $webpageTitle = "Log In Submit";
     include SITE_ROOT."/includes/header.php";
     include SITE_ROOT."/db/dbConnection.php";
