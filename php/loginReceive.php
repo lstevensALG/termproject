@@ -28,9 +28,10 @@
                     $result = mysqli_query($conn, $sqlMatchInfo);
                     $loginSuccess = FALSE;
                     //Check if there is record with username
-                    if (mysqli_num_rows($result) >= 1) {
+                    if (mysqli_num_rows($result) == 1) {
                         $dbRecord = mysqli_fetch_assoc($result);
                         $dbPassword = $dbRecord['profile_password'];
+                        $dbID = $dbRecord['profile_id'];
                         //Check if password is same
                         if (password_verify($password, $dbPassword) ) {
                             $loginSuccess = TRUE;
@@ -45,7 +46,7 @@
                     }
                     
                     if ($loginSuccess) {
-                        $_SESSION['profile_username'] = $username;
+                        $_SESSION['profile_id'] = $dbID;
                         $oto = $_SESSION['profile_username'];
                         echo "Welcome, $oto!";
                     }

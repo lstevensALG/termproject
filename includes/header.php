@@ -36,7 +36,7 @@
                                 <a href="/index.php" class="nav-link">Home</a>
                             </li>
                             <?php
-                                if (!isset($_SESSION['profile_username'])) {
+                                if (!isset($_SESSION['profile_id'])) {
                                     echo <<<END
                                     <li class="nav-itm">
                                         <a href="/php/signup.php" class="nav-link">Sign Up</a>
@@ -51,13 +51,14 @@
                                     <li class="nav-itm">
                                         <a href="/php/logout.php" class="nav-link text-bg-primary rounded-3">Log Out</a>
                                     </li>
+                                    <li class="nav-itm">
+                                        <a href="/php/profile.php" class="nav-link">Profile</a>
+                                    </li>
                                     END;
                                 }
                             ?>
                             
-                            <li class="nav-itm">
-                                <a href="#" class="nav-link">Placeholder</a>
-                            </li>
+                            
                         </ul>
                     </div>
                 </div>
