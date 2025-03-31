@@ -7,8 +7,9 @@
 ?>
 
 <?php
-    //Creating tables
-    
+    //Ensure tables are there
+    include SITE_ROOT."/db/tableCreatePics.php";
+    include SITE_ROOT."/db/tablePopulatePics.php";
 ?>
 
 <?php /* require_once '../AnimalWeb/includes/header.php'?>

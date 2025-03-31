@@ -10,7 +10,7 @@
             <?php
                 include SITE_ROOT."/db/dbConnection.php";
                 include SITE_ROOT."/db/tableCreatePics.php";
-                include SITE_ROOT."/db/populateTablePics.php";
+                include SITE_ROOT."/db/tablePopulatePics.php";
             ?>
         </div>
     </div>

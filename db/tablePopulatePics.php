@@ -1,4 +1,10 @@
 <?php
+    //NOTE this will only populate the table if there are no records in the table
+    //delete the termproject_pics table,
+    //include the tableCreatePics.php,
+    //finally,
+    //include this file
+
     //include dbConnection.php before including this
     $sqlTableInsertPics = "INSERT INTO termproject_pics
     (pic_path) 
