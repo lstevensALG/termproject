@@ -47,8 +47,7 @@
                     
                     if ($loginSuccess) {
                         $_SESSION['profile_id'] = $dbID;
-                        $oto = $_SESSION['profile_username'];
-                        echo "Welcome, $oto!";
+                        echo "Welcome, $username!";
                     }
 
                 }

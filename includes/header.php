@@ -49,10 +49,10 @@
                                 else {
                                     echo <<<END
                                     <li class="nav-itm">
-                                        <a href="/php/logout.php" class="nav-link text-bg-primary rounded-3">Log Out</a>
+                                        <a href="/php/profile.php" class="nav-link">Profile</a>
                                     </li>
                                     <li class="nav-itm">
-                                        <a href="/php/profile.php" class="nav-link">Profile</a>
+                                        <a href="/php/logout.php" class="nav-link text-bg-primary rounded-3">Log Out</a>
                                     </li>
                                     END;
                                 }
