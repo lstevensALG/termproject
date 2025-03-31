@@ -11,7 +11,7 @@ For example:
 
 Additionally, dont forget to do "npm install" to install the npm dependencies.
 
-You do not need to create an SQL databse through phpMyAdmin as I have code that will automatically create the profile database. Though, I am unsure if it will work if you do not have the "client" database.
+You need to make a database called "client". You do not need to make a table for that database, I have implemented code to automatically do that. If you cannot make the database for some reason, tell me so that I can export a database to you.
 
 
 SYNCHRONIZE CHANGES TO BE ABLE TO PUSH CHANGES
