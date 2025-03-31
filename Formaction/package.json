@@ -1,0 +1,19 @@
+{
+  "name": "formaction",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "sass-build": "sass --no-source-map scss:css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Somgolie"
+  },
+  "author": "Somgolie",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "bootstrap": "^5.3.3",
+    "sass": "^1.86.0"
+  }
+}
