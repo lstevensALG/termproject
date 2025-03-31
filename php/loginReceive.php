@@ -20,8 +20,7 @@
                     //Don't encode password
 
                     //creating table if it doesn't exist to avoid error
-                    include SITE_ROOT."/db/tableCreateProfile.php";
-                    mysqli_query($conn, $sqlTableCreate);
+                    include SITE_ROOT."/db/tableCreateProfiles.php";
 
                     //SQL queriey for matching username and password
                     $sqlMatchInfo = "SELECT * FROM termproject_profiles WHERE profile_username='$username' ";

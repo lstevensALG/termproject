@@ -26,7 +26,7 @@ if (isset($_POST['search'])) {
 
 
 ?>
-<!-- big internal css is really not good -->
+<!-- big internal css is not good -->
 <link rel="stylesheet" href="/css/profilePage.css">
 
     <!-- Profile Section -->

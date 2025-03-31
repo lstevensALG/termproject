@@ -26,8 +26,7 @@
                     $sqlTableInsert = "INSERT INTO termproject_profiles (profile_username, profile_password) VALUES ('$username', '$password')";
                     
                     //Create table if it doesn't exist
-                    include SITE_ROOT."/db/tableCreateProfile.php";
-                    mysqli_query($conn, $sqlTableCreate);
+                    include SITE_ROOT."/db/tableCreateProfiles.php";
 
                     //Check if username is unique
                     if (mysqli_num_rows(mysqli_query($conn, $sqlCheckUnique)) == 0) {
