@@ -11,7 +11,7 @@
                 </div>
                 <div class="col-3">
                     <h6 class="text-center">Follow Us</h6>
-                    <div class="text-muted">
+                    <div class="text-muted text-end">
                         <p>Facebook</p>
                         <p>Instagram</p>
                         <p>Snapchat</p>
