@@ -1,4 +1,6 @@
 <?php
+    include SITE_ROOT."/db/dbCreate.php";
+
     $servername = "localhost";  	// Server name or IP address
     $username = "root";     		// MySQL username
     $password = "";     			// MySQL password

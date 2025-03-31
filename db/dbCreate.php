@@ -10,4 +10,5 @@
 
     //create database
     mysqli_query($conn, $sqlDBCreate);
+    mysqli_close($conn);
 ?>
