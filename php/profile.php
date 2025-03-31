@@ -6,12 +6,15 @@
     include SITE_ROOT."/db/dbConnection.php";
 ?>
 
+<?php
+    //Creating tables
+    
+?>
+
 <?php /* require_once '../AnimalWeb/includes/header.php'?>
 <?php require_once '../AnimalWeb/db/conn.php' */?>
 
 <?php 
-$_SESSION['ID'] = 2; // Set user ID manually for testing
-
 $userID = $_SESSION['ID']; // Assign to a variable for clarity
 
 $searchQuery = '';
