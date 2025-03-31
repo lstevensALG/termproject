@@ -6,7 +6,7 @@
     include SITE_ROOT."/db/dbConnection.php";
 ?>
 
-<div class="container">
+<div class="container text-center">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <?php
@@ -33,7 +33,7 @@
                     if (mysqli_num_rows(mysqli_query($conn, $sqlCheckUnique)) == 0) {
                         //If username is unique, try inserting
                         if (mysqli_query($conn, $sqlTableInsert)) {
-                            echo "Record added successfully!";
+                            echo "Profile added successfully!";
                         }
                         //If insertion failed
                         else {
