@@ -6,13 +6,27 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md-12">
             <?php
-                include SITE_ROOT."/db/dbConnection.php";
-                include SITE_ROOT."/db/tableCreatePics.php";
-                include SITE_ROOT."/db/tablePopulatePics.php";
+                $dir = new DirectoryIterator(SITE_ROOT."/pics/");
+                foreach ($dir as $fileinfo) {
+                    if (!$fileinfo->isDot()) {
+                    $value = $fileinfo->getFilename();
+                    echo <<<END
+                    <div class="col-md-4">
+                        <div class="card mb-3">
+                            <div class="d-flex gap-3">
+                                <img
+                                    src="/pics/$value"
+                                    alt=""
+                                    class="img-fluid rounded-circle picture-size"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    END;
+                    }
+                }
             ?>
-        </div>
     </div>
 </div>
 
