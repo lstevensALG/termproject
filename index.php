@@ -6,12 +6,12 @@
 
 <div class="container">
     <div class="row">
-            <?php
-                $dir = new DirectoryIterator(SITE_ROOT."/pics/");
-                foreach ($dir as $fileinfo) {
-                    if (!$fileinfo->isDot()) {
-                    $value = $fileinfo->getFilename();
-                    echo <<<END
+        <?php
+            $dir = new DirectoryIterator(SITE_ROOT."/pics/");
+            foreach ($dir as $fileinfo) {
+                if (!$fileinfo->isDot()) {
+                $value = $fileinfo->getFilename();
+                echo <<<END
                     <div class="col-md-4">
                         <div class="card mb-3">
                             <div class="d-flex gap-3">
@@ -23,10 +23,10 @@
                             </div>
                         </div>
                     </div>
-                    END;
-                    }
+                END;
                 }
-            ?>
+            }
+        ?>
     </div>
 </div>
 
