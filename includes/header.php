@@ -13,7 +13,7 @@
         <script src="/js/darkmodetoggle.js"></script>
     </head>
     <body>
-        <header class="mb-5">
+        <header class="mb-5 w-100">
             <div class="container mt-5">
                 <div class="d-flex justify-content-end">
                     <div class="btn-group">

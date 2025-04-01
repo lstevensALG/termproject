@@ -2,7 +2,7 @@
     include "../directory.php";
     //include SITE_ROOT."/php/redirectHome.php";
     $webpageTitle = "Profile";
-    include SITE_ROOT."/includes/profile_header.php";
+    include SITE_ROOT."/includes/header.php";
     include SITE_ROOT."/db/dbConnection.php";
 ?>
 

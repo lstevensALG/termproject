@@ -3,8 +3,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AnimalWeb</title>
-<link rel="stylesheet" href="/Formaction/css/bootstarp.css">
-<link rel="stylesheet" href="/Formaction/css/style.css">
+<link rel="stylesheet" href="/css/bootstrap.css">
+<link rel="stylesheet" href="/css/style.css">
+<script src="/js/bootstrap.bundle.min.js"></script>
+<script src="/js/darkmodetoggle.js"></script>
 <style>
 .container {
     
