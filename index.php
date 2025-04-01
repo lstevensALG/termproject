@@ -18,7 +18,7 @@
                                 <img
                                     src="/pics/$value"
                                     alt=""
-                                    class="img-fluid rectangle picture-size"
+                                    class="img-fluid rounded-circle picture-size"
                                 />
                             </div>
                         </div>
