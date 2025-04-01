@@ -7,8 +7,8 @@
 
     //include dbConnection.php before including this
     $sqlTableInsertPics = "INSERT INTO termproject_pics
-    (pic_path) 
-    VALUES (?)";
+    (pic_path, pic_name) 
+    VALUES (?, '')";
 
     //check if table has records
     $sqlTableSelectPics = "SELECT * FROM termproject_pics";

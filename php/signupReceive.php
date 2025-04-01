@@ -23,7 +23,7 @@
                     //SQL queries for checking if username is unique,
                     //and inserting a record into a table
                     $sqlCheckUnique = "SELECT profile_username FROM termproject_profiles WHERE profile_username='$username'";
-                    $sqlTableInsert = "INSERT INTO termproject_profiles (profile_username, profile_password) VALUES ('$username', '$password')";
+                    $sqlTableInsert = "INSERT INTO termproject_profiles (profile_username, profile_password, profile_pic, profile_description) VALUES ('$username', '$password', '', '')";
                     
                     //Create table if it doesn't exist
                     include SITE_ROOT."/db/tableCreateProfiles.php";

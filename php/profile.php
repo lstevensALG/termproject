@@ -10,13 +10,14 @@
     //Ensure tables are there
     include SITE_ROOT."/db/tableCreatePics.php";
     include SITE_ROOT."/db/tablePopulatePics.php";
+    include SITE_ROOT."/db/tableCreatePicsSaved.php";
 ?>
 
 <?php /* require_once '../AnimalWeb/includes/header.php'?>
 <?php require_once '../AnimalWeb/db/conn.php' */?>
 
 <?php 
-$userID = $_SESSION['ID']; // Assign to a variable for clarity
+$userID = $_SESSION['profile_id']; // Assign to a variable for clarity
 
 $searchQuery = '';
 if (isset($_POST['search'])) {
@@ -34,7 +35,7 @@ if (isset($_POST['search'])) {
     <div class="profile-container">
     <div class="profile-pic">
       <?php  
-              $sql = "SELECT favpic FROM user_profile_info WHERE ID = ?";
+              $sql = "SELECT profile_pic FROM termproject_profiles WHERE profile_id = ?";
               $stmt = $conn->prepare($sql);
               $stmt->bind_param("i", $userID);
               $stmt->execute();
@@ -42,7 +43,7 @@ if (isset($_POST['search'])) {
               
               if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
-                    echo '<img src="' . htmlspecialchars($row['favpic']) . '" alt="Saved Image" class="profile-pic">';
+                    echo '<img src="/pics/' . htmlspecialchars($row['profile_pic']) . '" alt="Saved Image" class="profile-pic">';
                 }
             } 
               ?>
@@ -51,7 +52,7 @@ if (isset($_POST['search'])) {
           <H1 class="profile-name">
             
             <?php  
-            $sql = "SELECT userNAME FROM user_profile_info WHERE ID = ?";
+            $sql = "SELECT profile_username FROM termproject_profiles WHERE profile_id = ?";
             $stmt = $conn->prepare($sql);
             $stmt->bind_param("i", $userID);
             $stmt->execute();
@@ -61,7 +62,7 @@ if (isset($_POST['search'])) {
             if ($result->num_rows > 0) {
                 // Fetch the user's name
                 $row = $result->fetch_assoc();
-                $userName = htmlspecialchars($row['userNAME']);
+                $userName = htmlspecialchars($row['profile_username']);
             } else {
                 // Handle the case where no user was found
                 $userName = 'User';
@@ -71,7 +72,7 @@ if (isset($_POST['search'])) {
           </H1>
           <div class="profile-description">
           <?php  
-            $sql = "SELECT profile_Description FROM user_profile_info WHERE ID = ?";
+            $sql = "SELECT profile_description FROM termproject_profiles WHERE profile_id = ?";
             $stmt = $conn->prepare($sql);
             $stmt->bind_param("i", $userID);
             $stmt->execute();
@@ -81,7 +82,7 @@ if (isset($_POST['search'])) {
             if ($result->num_rows > 0) {
                 // Fetch the user's name
                 $row = $result->fetch_assoc();
-                $userDescription = htmlspecialchars($row['profile_Description']);
+                $userDescription = htmlspecialchars($row['profile_description']);
             } else {
                 // Handle the case where no user was found
                 $userDescription= 'Write something...';
@@ -136,7 +137,11 @@ if (isset($_POST['search'])) {
     <!-- Image Grid -->
     <div class="image-grid">
     <?php
-        $sql = "SELECT photoURL FROM user_saved_info WHERE userID = ? AND photoNAME LIKE ?";
+        $sql = "SELECT pic_path 
+        FROM (termproject_pics_saved
+        INNER JOIN termproject_pics ON termproject_pics_saved.pic_id = termproject_pics.pic_id)
+        WHERE profile_id = ? AND pic_name LIKE ?";
+        //get this shit to work
         $stmt = $conn->prepare($sql);
         $searchParam = "%" . $searchQuery . "%";  // Wildcard for LIKE query
         $stmt->bind_param("is", $userID, $searchParam);
@@ -145,7 +150,7 @@ if (isset($_POST['search'])) {
 
       if ($result->num_rows > 0) {
           while ($row = $result->fetch_assoc()) {
-              echo '<img src="' . htmlspecialchars($row['photoURL']) . '" alt="Saved Image">';
+              echo '<img src="/pics/' . htmlspecialchars($row['pic_path']) . '" alt="Saved Image">';
           }
       } else {
           echo "<p>No saved images yet.</p>";
@@ -154,4 +159,6 @@ if (isset($_POST['search'])) {
     </div>
 
 </body>
-<?php require_once '../AnimalWeb/includes/footer.php'?>
+<?php
+    include SITE_ROOT."/includes/footer.php";
+?>
