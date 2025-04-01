@@ -3,7 +3,7 @@
                 <div class="col-3">
                     <h6 class="text-center">About Section</h6>
                     <div class="text-muted">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat dolores debitis saepe id quibusdam itaque nostrum corporis obcaecati? Repudiandae incidunt aspernatur minus officia aliquam necessitatibus quaerat? Est ullam quos modi.</p>
+                        <p> Welcome to the website where you can view animals at your leisure! Your profile will allow you to save certain images of your desired animals, so feel free to customize your profile in any way you wish.</p>
                     </div>
                   </div>   
                 <div class="col-6">
