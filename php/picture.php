@@ -4,6 +4,11 @@
     include SITE_ROOT."/includes/header.php";
 ?>
 
+<?php
+if(isset($_POST['save'])){
+
+}
+?>
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -17,15 +22,16 @@
         <?php
         if(isset($_SESSION['profile_id'])){
             echo <<<END
-            <form method="POST" action="/php/search.php">
+            <form method="POST" action="">
                 <div class="search-container d-flex flex-row">
                 
-                    <button type="submit" class="btn btn-primary">Save Image</button>
+                    <button name="save" type="submit" class="btn btn-primary">Save Image</button>
                     
                 </div>
                         
             </form>
             END;
+            echo var_dump($_POST);
         }
         ?>
         </div>
@@ -39,10 +45,10 @@
         <?php
         if(isset($_SESSION['profile_id'])){
             echo <<<END
-            <form method="POST" action="/php/search.php">
+            <form method="POST" action="">
                 <div class="search-container d-flex flex-row">
                 
-                    <button type="submit" class="btn btn-primary">Save Image</button>
+                    <button type="submit" class="btn btn-primary">Placeholder</button>
                     
                 </div>
                         
@@ -53,6 +59,7 @@
         </div>
     </div>
 </div>
+
 <?php
     include SITE_ROOT."/includes/footer.php";
 ?>
