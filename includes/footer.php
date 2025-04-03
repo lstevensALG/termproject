@@ -3,7 +3,7 @@
                 <div class="col-3">
                     <h6 class="text-center">About Section</h6>
                     <div class="text-muted">
-                        <p> Welcome to the website where you can view animals at your leisure! Your profile will allow you to save certain images of your desired animals, so feel free to customize your profile in any way you wish.</p>
+                        <p> Welcome to the website where you can view animals at your leisure! If you logged in, your profile will allow you to save certain images of your desired animals, so feel free to customize your profile in any way you wish.</p>
                     </div>
                   </div>   
                 <div class="col-6">
