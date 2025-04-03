@@ -14,7 +14,29 @@
 <div class="container">
     <div class="row">
         <?php
-        echo var_dump($_POST);
+        $dir = new DirectoryIterator(SITE_ROOT."/pics/");
+        foreach ($dir as $fileinfo) {
+        if(str_contains(strtolower($fileinfo->getFilename()),  strtolower($searchQuery))) {
+            if (!$fileinfo->isDot()) {
+            $value = $fileinfo->getFilename();
+            echo <<<END
+            <div class="col-md-4">
+                <div class="card mb-3">
+                    <div class="d-flex gap-3">
+                        <a href="/php/picture.php?pic_path=$value">
+                            <img
+                                src="/pics/$value"
+                                alt=""
+                                class="img-fluid rounded-circle picture-size"
+                            />
+                        </a>
+                    </div>
+                </div>
+            </div>
+            END;
+            }
+        }
+    }
         ?>
     </div>
 </div>
