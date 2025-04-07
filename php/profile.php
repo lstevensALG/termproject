@@ -140,8 +140,8 @@ if (isset($_POST['search'])) {
         $sql = "SELECT pic_path 
         FROM (termproject_pics_saved
         INNER JOIN termproject_pics ON termproject_pics_saved.pic_id = termproject_pics.pic_id)
-        WHERE profile_id = ? AND pic_name LIKE ?";
-        //get this shit to work
+        WHERE profile_id = ? AND pic_path LIKE ?";
+        //get the search to work
         $stmt = $conn->prepare($sql);
         $searchParam = "%" . $searchQuery . "%";  // Wildcard for LIKE query
         $stmt->bind_param("is", $userID, $searchParam);

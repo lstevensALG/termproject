@@ -15,11 +15,13 @@
                     <div class="col-md-4">
                         <div class="card mb-3">
                             <div class="d-flex gap-3">
-                                <img
-                                    src="/pics/$value"
-                                    alt=""
-                                    class="img-fluid rounded-circle picture-size"
-                                />
+                                <a href="/php/picture.php?pic_path=$value">
+                                    <img
+                                        src="/pics/$value"
+                                        alt=""
+                                        class="img-fluid rounded-circle picture-size"
+                                    />
+                                </a>
                             </div>
                         </div>
                     </div>

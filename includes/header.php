@@ -22,14 +22,18 @@
                     </div>
                 </div>
                 <h1 class="mb-5">Placeholder</h1>
-                <div class="row">
-                    <div class="col-md-4">
-                        <input
-                            type="text"
-                            class="form-control form-control-lg"
-                            placeholder="Search Animals"
-                            />
-                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                        <form method="POST" action="/php/search.php">
+                            <div class="search-container d-flex flex-row">
+                            
+                                <input type="text" name="search" class="form-control" placeholder="Search Animals">
+                                <button type="submit" class="btn btn-primary">Search</button>
+                                
+                            </div>
+                                    
+                        </form>
+                        </div>
                     <div class="col-md-8 discussion-menu d-flex justify-content-end align-items-center">
                         <ul class="nav">
                             <li class="nav-itm">
