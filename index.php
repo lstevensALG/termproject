@@ -13,7 +13,7 @@
                 $value = $fileinfo->getFilename();
                 echo <<<END
                     <div class="col-md-4">
-                        <div class="card mb-3">
+                        <div class="card mb-3 border border-2 border-secondary">
                             <div class="d-flex gap-3 justify-content-center">
                                 <a href="/php/picture.php?pic_path=$value">
                                     <img

@@ -33,21 +33,21 @@ if (isset($_POST['search'])) {
 
     <!-- Profile Section -->
     <div class="profile-container">
-    <div class="profile-pic">
-      <?php  
-              $sql = "SELECT profile_pic FROM termproject_profiles WHERE profile_id = ?";
-              $stmt = $conn->prepare($sql);
-              $stmt->bind_param("i", $userID);
-              $stmt->execute();
-              $result = $stmt->get_result();
-              
-              if ($result->num_rows > 0) {
+        <div class="profile-pic text-center">
+        <?php  
+            $sql = "SELECT profile_pic FROM termproject_profiles WHERE profile_id = ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("i", $userID);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            
+            if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
-                    echo '<img src="/pics/' . htmlspecialchars($row['profile_pic']) . '" alt="Saved Image" class="profile-pic">';
+                    echo '<img src="/pics/' . htmlspecialchars($row['profile_pic']) . '" alt="Saved Image" class="profile-pic border border-primary border-5">';
                 }
             } 
-              ?>
-    </div>
+        ?>
+        </div>
         <div class="box">
           <H1 class="profile-name">
             
@@ -161,7 +161,6 @@ if (isset($_POST['search'])) {
       ?>
     </div>
 
-</body>
 <?php
     include SITE_ROOT."/includes/footer.php";
 ?>

@@ -6,6 +6,13 @@
     include SITE_ROOT."/db/dbConnection.php";
 ?>
 
+<?php
+    //Ensure tables are there
+    include SITE_ROOT."/db/tableCreatePics.php";
+    include SITE_ROOT."/db/tablePopulatePics.php";
+    include SITE_ROOT."/db/tableCreatePicsSaved.php";
+?>
+
 <div class="container text-center">
     <div class="row justify-content-center">
         <div class="col-md-8">
