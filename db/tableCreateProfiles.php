@@ -10,4 +10,10 @@
 
     $stmt = $conn->prepare($sqlTableCreateProfiles);
     $stmt->execute();
+
+    $sqlTableAlterProfiles = "ALTER TABLE termproject_profiles
+    ADD COLUMN IF NOT EXISTS favColor VARCHAR(50) NOT NULL";
+
+    $stmt = $conn->prepare($sqlTableAlterProfiles);
+    $stmt->execute();
 ?>
