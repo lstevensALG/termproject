@@ -5,7 +5,7 @@
                     <div class="text-muted">
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat dolores debitis saepe id quibusdam itaque nostrum corporis obcaecati? Repudiandae incidunt aspernatur minus officia aliquam necessitatibus quaerat? Est ullam quos modi.</p>
                     </div>
-                  </div>   
+                </div>   
                 <div class="col-6">
                   
                 </div>  
