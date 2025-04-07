@@ -1,6 +1,5 @@
 .picture-size {
-    width: 250px;
-    height: 250px;
-    object-fit: cover;
-    margin-inline: auto;
-  }
+width: 250px;
+height: 250px;
+object-fit: cover;
+}

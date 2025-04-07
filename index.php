@@ -14,7 +14,7 @@
                 echo <<<END
                     <div class="col-md-4">
                         <div class="card mb-3">
-                            <div class="d-flex gap-3">
+                            <div class="d-flex gap-3 justify-content-center">
                                 <a href="/php/picture.php?pic_path=$value">
                                     <img
                                         src="/pics/$value"
