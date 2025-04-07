@@ -150,7 +150,10 @@ if (isset($_POST['search'])) {
 
       if ($result->num_rows > 0) {
           while ($row = $result->fetch_assoc()) {
-              echo '<img src="/pics/' . htmlspecialchars($row['pic_path']) . '" alt="Saved Image">';
+                $value = $row['pic_path'];
+                echo "<a href=\"/php/picture.php?pic_path=$value\" >";
+                echo '<img src="/pics/' . htmlspecialchars($value) . '" alt="Saved Image">';
+                echo "</a>";
           }
       } else {
           echo "<p>No saved images yet.</p>";
