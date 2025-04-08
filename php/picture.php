@@ -98,7 +98,7 @@
                 echo <<<END
                 <form method="POST" action="">
                     <div class="search-container d-flex flex-row">
-                        <button name="profile_pic" type="submit" class="btn btn-primary">Placeholder</button>
+                        <button name="profile_pic" type="submit" class="btn btn-primary">Set Profile Picture</button>
                     </div>
                 </form>
                 END;
