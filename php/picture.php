@@ -63,7 +63,7 @@
                     $result = $stmt->get_result();
                     if ($result->num_rows != 0) {
                         $success = FALSE;
-                        echo "<p>Error: picture already saved.</p>";
+                        echo "<p>Picture already saved.</p>";
                     }
                 }
                 //if found picture AND not already saved
