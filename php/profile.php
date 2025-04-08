@@ -366,9 +366,11 @@ input[type="color"] {
                     // var_dump($absolutePath);
                     
                     // Check if the profilePic is non-empty and the file exists
-                    if ( ($profilePic != NULL) and (file_exists($absolutePath))  ) {
+                    if ( ($profilePic != NULL)  ) {
+                      
                         echo '<img src="/pics/' . htmlspecialchars($profilePic) . '" alt="Saved Image" class="profile-pic">';
                     } else {
+                      
                         echo '<img src="/pics/Lion.jpg" alt="empty" class="profile-pic">';
                     }
                 }
