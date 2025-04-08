@@ -1,6 +1,6 @@
 <?php
     include "../directory.php";
-    $webpageTitle = "Home";
+    $webpageTitle = "Picture";
     include SITE_ROOT."/includes/header.php";
 ?>
 
@@ -10,7 +10,7 @@
             <img
                 src="/pics/<?php echo $_GET['pic_path'];?>"
                 alt=""
-                class="img-fluid"
+                class="img-fluid rounded border border-3 border-primary"
             />
         </div>
         <div class="col-md-3 mt-5">
