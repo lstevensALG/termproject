@@ -360,14 +360,14 @@ input[type="color"] {
                     $profilePic = trim($profilePic);
                     
                     // Build an absolute filesystem path
-                    $absolutePath = $_SERVER['DOCUMENT_ROOT'] . '/' . $profilePic;
+                    $absolutePath = $_SERVER['DOCUMENT_ROOT'] . '/pics/' . $profilePic;
                     
                     // Debug output (remove or comment out in production)
                     // var_dump($absolutePath);
                     
                     // Check if the profilePic is non-empty and the file exists
-                    if (!empty($profilePic) && file_exists($absolutePath)) {
-                        echo '<img src="' . htmlspecialchars($profilePic) . '" alt="Saved Image" class="profile-pic">';
+                    if ( ($profilePic != NULL) and (file_exists($absolutePath))  ) {
+                        echo '<img src="/pics/' . htmlspecialchars($profilePic) . '" alt="Saved Image" class="profile-pic">';
                     } else {
                         echo '<img src="/pics/Lion.jpg" alt="empty" class="profile-pic">';
                     }
