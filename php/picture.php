@@ -76,22 +76,33 @@
                     echo "<p>Picture successfully saved.</p>";
                 }
             ?>
+            <?php
+                //code to set pic 
+                include SITE_ROOT."/db/dbConnection.php";
+                if (isset($_POST['profile_pic'])) {
+                    $sqlTableInsert = "UPDATE termproject_profiles
+                    SET profile_pic = (?)
+                    WHERE profile_id = (?)";
+                    $stmt = $conn->prepare($sqlTableInsert);
+                    $stmt->bind_param("si", $_GET['pic_path'], $_SESSION['profile_id']);
+                    $stmt->execute();
+                    echo "<p>Sucessfully set as profile picture.</p>";
+                }
+            ?>
         </div>
-
+        
         <div class="col-md-3 mt-5 d-flex justify-content-end">
         <?php
-        if(isset($_SESSION['profile_id'])){
-            echo <<<END
-            <form method="POST" action="">
-                <div class="search-container d-flex flex-row">
-                
-                    <button type="submit" class="btn btn-primary">Placeholder</button>
-                    
-                </div>
-                        
-            </form>
-            END;
-        }
+            //Set profile pic button
+            if(isset($_SESSION['profile_id'])){
+                echo <<<END
+                <form method="POST" action="">
+                    <div class="search-container d-flex flex-row">
+                        <button name="profile_pic" type="submit" class="btn btn-primary">Placeholder</button>
+                    </div>
+                </form>
+                END;
+            }
         ?>
         </div>
     </div>
