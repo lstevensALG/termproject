@@ -19,6 +19,20 @@
 <?php 
 $userID = $_SESSION['profile_id']; // Assign to a variable for clarity
 
+$sql = "SELECT favColor FROM termproject_profiles WHERE profile_id = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $userID);
+$stmt->execute();
+$result = $stmt->get_result();
+
+$favColor = "#ffffff"; // default fallback
+
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $favColor = $row['favColor'] ?? "#ffffff";
+}
+$stmt->close();
+
 $searchQuery = '';
 if (isset($_POST['search'])) {
     $searchQuery = $_POST['search'];
@@ -34,13 +48,21 @@ if (isset($_POST['save_profile'])) {
         $sql = "UPDATE termproject_profiles SET profile_description = ? WHERE profile_id = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("si", $newDescription, $userID);
-        if ($stmt->execute()) {
-            // Optional: redirect to refresh the page and show the updated description
-            header("Location: " . $_SERVER['PHP_SELF']);
-            exit;
-        } else {
-            echo "<p style='color:red;'>Update failed: " . $stmt->error . "</p>";
-        }
+    }
+    $newcolor = isset($_POST['favcolor']) ? trim($_POST['favcolor']) : null;
+
+    if ($newcolor !== null) {
+        $sql = "UPDATE termproject_profiles SET favColor = ? WHERE profile_id = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("si", $newcolor, $userID);
+    }
+
+    if ($stmt->execute()) {
+        // Optional: redirect to refresh the page and show the updated description
+        header("Location: " . $_SERVER['PHP_SELF']);
+        exit;
+    } else {
+        echo "<p style='color:red;'>Update failed: " . $stmt->error . "</p>";
     }
 }
 // save favPic
@@ -59,8 +81,267 @@ if (isset($_POST['like'])) {
 }
 
 ?>
+<style>
+    
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+.profile-pic {
+  width: 250px; /* Ensure width and height are the same */
+  height: 250px;
+  border-radius: 50%; /* Ensures it's a circle */
+  object-fit: cover; /* Prevents distortion */
+  display: block;
+
+  object-fit: cover;
+  margin-right: 20px;
+  border-width:10px;
+ border-color: <?php echo htmlspecialchars($favColor); ?>;
+  border-style: solid;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Ensures elements stay side by side */
+  width: 100%;
+  margin-bottom: 0px;
+  max-width: 1000px;
+  padding: 15px;
+  border-radius: 10px;
+  /*box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); /* Optional shadow */
+}
+
+.search-bar {
+  /*background-color: rgb(49, 51, 52); /* Grey Background */
+  width: 100%;
+  max-width: 1000px;
+  padding: 10px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+}
+
+.simple-button {
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-left: 10px;
+}
+
+.image-grid {
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 250px);
+  gap: 20px;
+  max-width: 1500px;
+  width: 100%;
+  background-color: <?php echo htmlspecialchars($favColor); ?>;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+/* Use a fixed width and height for grid images */
+.image-grid img {
+  width: 200px;       /* fixed width */
+  height: 250px;      /* fixed height */
+  object-fit: cover;  /* ensures the image fills the dimensions without distortion */
+  border-radius: 10px;
+}
+
+.profile-container {
+    
+  display: flex;
+  margin-bottom: 60px;
+  width: 100%;
+  max-width: 1000px;
+}
+
+.profile-description {
+    
+  background-color: rgba(0, 0, 0, 0);
+  flex-direction: column;
+  align-items: start; /* Moves everything to the left */
+  width: 100%;
+  max-width: 800px;
+  word-wrap: break-word; /* Ensures text wraps */
+  overflow-wrap: break-word; /* Ensures text wraps */
+  white-space: normal; /* Allows wrapping inside the box */
+  position: relative; /* Establishes a positioning context for the button */
+  padding: 20px; /* Optional: Adds padding inside the box */
+}
+
+.profile-name {
+ /* background-color: <?php echo htmlspecialchars($favColor); ?>; */
+  border-radius: 10px;
+}
+
+
+
+
+
+textarea {
+  width: 100%; /* Make it take the full width of the box */
+  max-width: 1200px; /* Limit the width to match the profile box */
+  height: 100%;
+  max-height: 300px;
+  padding: 10px;
+  border-radius: 20px; /* Rounded edges */
+  border: 1px solid #ccc; /* Border color */
+  font-size: 16px; /* Optional: Adjust text size */
+  resize: vertical; /* Allows resizing vertically */
+}
+
+.box {
+    border-width:2px;
+   border-color: <?php echo htmlspecialchars($favColor); ?>;
+  border-style: solid;
+  flex-direction: row;
+  background-color: rgba(27, 27, 31, 0.512);
+  color: white;
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px;
+  width: 1000px;
+  min-height: 50px; /* Ensures they are the same height */
+
+}
+
+/* Modal Styles */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent background */
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 15% auto;
+  padding: 20px;
+  border-radius: 10px;
+  width: 80%; /* Set the width of the modal */
+  height: 80%; /* Set the width of the modal */
+  max-width: 1000px;
+  max-height: 800px;
+}
+
+/* Close Button */
+.close-btn {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.image-container {
+  position: relative;
+  display: inline-block; /* keeps image and button together */
+}
+.close-btn:hover,
+.close-btn:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.edit-profile-form {
+  position: relative; /* Required for positioning the button inside the form */
+  height: 300px; /* Set a fixed height for the popup */
+}
+
+.save-btn {
+  position: absolute;
+  bottom: 10px; /* Position the button 10px from the bottom of the form */
+  left: 50%;
+  transform: translateX(-50%); /* Centers the button horizontally */
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.save-btn:hover {
+  background-color: #45a049;
+}
+.Fav-button {
+  position: absolute;
+  bottom: 10px;
+  right: 60px;
+  transition: background 0.2s;
+  background-color: rgba(0, 0, 0, 0); /* semi-transparent background */
+  color: white;  /* Set initial color of the SVG */
+  border-radius:50% ;
+  border: none;
+  cursor: pointer;
+}
+
+.Fav-button:hover {
+  background-color: rgb(255, 243, 199); /* Background color on hover */
+}
+
+.Fav-button:hover svg {
+  color:rgb(255, 202, 67); /* Change the color of the SVG on hover (e.g., gold) */
+}
+.edit-btn {
+    position: absolute;
+    top: 10px; /* Distance from the top edge */
+    right: 10px; /* Distance from the right edge */
+    padding: 5px 10px;
+    background-color: #4CAF50; /* Green background */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.edit-btn:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+.color-box {
+  
+  padding: 20px;
+  border-radius: 15px;
+  margin-top: 20px;
+  width: 250px;
+  display: flex;
+  color:rgb(155, 155, 155);
+  align-items: center;
+  left: 60px;
+}
+
+input[type="color"] {
+    margin-left:20px;
+  margin-top: 10px;
+  width: 60px;
+  height: 40px;
+  border: none;
+  cursor: pointer;
+  background: none;
+}
+
+</style>
 <!-- big internal css is not good -->
-<link rel="stylesheet" href="/css/profilePage.css">
+<!--<link rel="stylesheet" href="/css/profilePage.css">-->
     <!-- Profile Section -->
     <div class="profile-container">
     
@@ -153,6 +434,10 @@ if (isset($_POST['like'])) {
         <span class="close-btn" id="closeBtn">&times;</span>
         <form class="edit-profile-form"id="editForm" method="POST" action="">
             <textarea name="new_description" rows="4" cols="50" placeholder="Edit your description..." ><?php echo htmlspecialchars($userDescription);?></textarea>
+            <div class="color-box">
+                    <label for="colorPicker">Pick a Profile Color:</label>
+                    <input type="color" id="colorPicker" name="favcolor" value="<?php echo htmlspecialchars($favColor); ?>">
+                </div>
                 <button type="submit" name="save_profile"class="save-btn">Save</button>
 
             </form>
