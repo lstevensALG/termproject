@@ -86,7 +86,7 @@
                     $stmt = $conn->prepare($sqlTableInsert);
                     $stmt->bind_param("si", $_GET['pic_path'], $_SESSION['profile_id']);
                     $stmt->execute();
-                    echo "<p>Sucessfully set as profile picture.</p>";
+                    echo "<p>Successfully set as profile picture.</p>";
                 }
             ?>
         </div>
